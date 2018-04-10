@@ -1,4 +1,5 @@
 {
+  "URL": "http://localhost:8084/backend/api/",
   "name": "nativefrontend",
   "version": "0.1.0",
   "private": true,
