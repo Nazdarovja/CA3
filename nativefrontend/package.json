@@ -1,5 +1,4 @@
 {
-  "URL": "http://localhost:8084/backend/api/",
   "name": "nativefrontend",
   "version": "0.1.0",
   "private": true,
@@ -23,5 +22,8 @@
     "expo": "^26.0.0",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.0"
+  },
+  "config" : {
+    "url": "http://localhost:8084/backend/api/"
   }
 }

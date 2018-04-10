@@ -13,6 +13,10 @@ export default class App extends React.Component {
   }
 }
 
+/////////////////////// TO BE USED TO ACCESS URL IN FACADE CLASS ///////////
+// var pkg = require('../package.json');
+// var URL = pkg.config.url;
+/////////////////////////////////////////////////
 const styles = StyleSheet.create({
   container: {
     flex: 1,

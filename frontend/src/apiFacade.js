@@ -1,4 +1,5 @@
-const URL = "http://localhost:8084/jwtbackend";
+var pkg = require('../package.json');
+var URL = pkg.config.url;
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -7,8 +8,6 @@ function handleHttpErrors(res) {
   }
   return res.json();
 }
-
-
 
 
 class ApiFacade {
@@ -33,6 +32,7 @@ class ApiFacade {
      }
     
      login = (user, pass) => {
+       console.log("this is the url "+URL);
         const options = this.makeFetchOptions("POST",{ username: user, password: pass });
         console.log(options);
         return fetch(URL+"/api/login",options,true)
