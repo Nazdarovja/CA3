@@ -38,18 +38,19 @@ export default class LoginForm extends Component {
 
                 <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={this.props.login(this.state.username, this.state.password)}
+                    onPress={() =>
+                        this.props.login(this.state.username, this.state.password)}
                 >
-
                     <Text
-                        style={styles.buttonText}
-                    >
-                        LOGIN
+                    style={styles.buttonText}
+                >
+                    LOGIN
                     </Text>
-                </TouchableOpacity>
-            </View>
+                        </TouchableOpacity>
+            </View >
         );
     }
+
 }
 
 const styles = StyleSheet.create({

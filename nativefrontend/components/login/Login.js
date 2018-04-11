@@ -1,27 +1,45 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
 import LoginForm from './LoginForm';
-import facade from './loginFacade'
+import facade from './loginFacade';
 
 export default class Login extends Component {
-  
-  login = (username, password) => {
-    facade.login(username, password);
+  constructor(props) {
+    super(props);
+    this.state = { isLoggedin: false, testText: "" };
   }
 
-  
+  login = (username, password) => {
+    facade.login(username, password);
+
+    const bool = facade.loggedIn();
+    this.setState({ isLoggedin: bool });
+  }
+
+  fetchData = async () => {
+    const json = await facade.fetchData();
+    console.log(json);
+    this.setState({ testText: json });
+  }
   render() {
+    if (this.state.isLoggedin) {
+      this.fetchData();
+      console.log(this.state.testText);
+      return (<View style={styles.container}>
+        <Text style={styles.title}>{this.state.testText}</Text>
+      </View>)
+    }
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
             source={require('../../images/icon.png')} />
-          <Text style={styles.title}> Seed powered by React Native</Text>
+          <Text style={styles.title}>Seed powered by React Native</Text>
         </View>
 
         <View style={styles.formContainer}>
-          <LoginForm login={this.login}/>
+          <LoginForm login={this.login} />
         </View>
       </KeyboardAvoidingView>
     );

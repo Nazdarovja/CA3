@@ -1,6 +1,6 @@
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 
-const URL = "http://localhost:8084/jwtbackend";
+const URL = "https://stanitech.dk/jwtBackend-1.0-SNAPSHOT";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -10,29 +10,36 @@ function handleHttpErrors(res) {
 }
 
 class ApiFacade {
-  setToken = (token) => {
-    AsyncStorage.setItem('jwtToken', token)
+
+  setToken = async (token) => {
+    await AsyncStorage.setItem('jwtToken', token)
   }
-  getToken = () => {
-    return AsyncStorage.getItem('jwtToken')
+
+  getToken = async () => {
+    const token = await AsyncStorage.getItem('jwtToken');
+    return token;
   }
+
   loggedIn = () => {
     const loggedIn = this.getToken() != null;
     return loggedIn;
   }
+
   logout = () => {
     AsyncStorage.removeItem("jwtToken");
   }
 
-  login = (user, pass) => {
+  login = async (user, pass) => {
     const options = this.makeFetchOptions("POST", { username: user, password: pass });
-    return fetch(URL + "/api/login", options, true)
+    const json = await fetch(URL + "/api/login", options, true)
       .then(handleHttpErrors)
-      .then(res => { this.setToken(res.token) })
+      .then(res => { this.setToken(res.token)})
   }
-  fetchData = () =>{
+
+  fetchData = async () => {
     const options = this.makeFetchOptions("GET");
-    return fetch(URL+"/api/info/user",options).then(handleHttpErrors);
+    const json = await fetch(URL + "/api/info/user", options).then(handleHttpErrors);
+    return JSON.stringify(json);
   }
 
   makeFetchOptions = (type, b) => {
