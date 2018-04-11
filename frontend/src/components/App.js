@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Router>
+          <Router basename='/CA3'>
             <Switch>
               <Route exact path='/' render={() => {
                 return (

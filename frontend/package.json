@@ -2,6 +2,7 @@
   "name": "security",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://mellemhub.dk/CA3",
   "dependencies": {
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -16,6 +17,6 @@
     "eject": "react-scripts eject"
   },
   "config": {
-    "url": "http://localhost:8080/jwtbackend"
+    "url": "https://awha.dk/jwtbackend"
   }
 }
