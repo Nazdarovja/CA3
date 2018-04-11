@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default () => {
+export default ({location}) => {
     return (
-        <h1>No URL match</h1>
+        <p>No URL match at: {location.pathname}</p>
     )
 }
