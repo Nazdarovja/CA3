@@ -1,6 +1,6 @@
-# Project Title
+# CA 3 - A Start Seed for JAX-RS, React and React Native based applications
 
-One Paragraph of project description goes here
+ This project contains a start seed, which allows one to quickly get started with new applications. 
 
 ## Getting Started
 
