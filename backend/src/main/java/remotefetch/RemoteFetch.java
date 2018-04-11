@@ -9,12 +9,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.html.HTML;
 
 /**
  *
  * @author Alexander W. Hørsted-Andersen <awha86@gmail.com>
  */
 public class RemoteFetch {
+
+    String baseUrl = "https://swapi.co/api/";
 
     public String prettyPrintJSON(String uglyJSONString) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -23,10 +28,16 @@ public class RemoteFetch {
         return gson.toJson(je);
     }
 
-    public String fetch(String url) throws MalformedURLException, IOException {
+    private String fetch(String url) throws Exception {
 
         //https://swapi.co/api/people/1
-        URL address = new URL(url);
+        //testing in Tester.java
+        URL address;
+        try {
+            address = new URL(url);
+        } catch (MalformedURLException ex) {
+            throw new Exception("EXCEPTION ERROR");
+        }
         HttpURLConnection conn = (HttpURLConnection) address.openConnection();
 
         conn.setRequestMethod("GET");
@@ -42,12 +53,27 @@ public class RemoteFetch {
         return jsonStr;
     }
 
-    public static void main(String[] args) throws IOException {
-        RemoteFetch test = new RemoteFetch();
-
-        String url = "https://swapi.co/api/";
-        String res = test.fetch(url);
-        String pretty = test.prettyPrintJSON(res);
-        System.out.println(pretty);
+    /**
+     * 
+     * @param category
+     * @return
+     * @throws Exception 
+     */
+    public String get(String category) throws Exception {
+        String URL = baseUrl + category.toLowerCase();
+        return fetch(URL);
     }
+    
+    /**
+     * 
+     * @param category
+     * @param ID
+     * @return
+     * @throws Exception 
+     */
+    public String get(String category, int ID) throws Exception{
+        String URL = baseUrl + category.toLowerCase() + "/" + ID;
+        return fetch(URL);
+    }
+
 }
