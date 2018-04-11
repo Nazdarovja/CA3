@@ -1,4 +1,4 @@
-![alt text](https://imgur.com/Ow7zJAX)
+![Alt text](/overview.png?raw=true "Overview")
 
 
 # CA 3 - A Start Seed for JAX-RS, React and React Native based applications
