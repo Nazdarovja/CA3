@@ -1,7 +1,7 @@
+# CA 3
+# - A Start Seed for JAX-RS, React and React Native based applications
+
 ![Alt text](/overview.png?raw=true "Overview")
-
-
-# CA 3 - A Start Seed for JAX-RS, React and React Native based applications
 
  This project contains a start seed, which allows one to quickly get started with new applications. 
 
