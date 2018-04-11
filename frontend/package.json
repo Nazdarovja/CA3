@@ -15,6 +15,6 @@
     "eject": "react-scripts eject"
   },
   "config": {
-    "url": "http://localhost:8084/backend/api/"
+    "url": "http://localhost:8080/jwtbackend"
   }
 }

@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
+import PeopleTable from './PeopleTable';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink
+} from 'react-router-dom'
 
 
 export default class LoggedIn extends Component {
     constructor(props) {
       super(props);
-      this.state = {dataFromServer: "Fetching!!"};
+      
     }
   
-    componentDidMount(){
-      this.props.facade.fetchData().then(res=> this.setState({dataFromServer: res}));
-    }
-    
     render() {
       return (
         <div>
-          <h2>Data Received from server</h2>
-          <h3>{this.state.dataFromServer}</h3>
+          <h2>HOME (loggedin)</h2>
+          <NavLink to={'/people'} activeClassName="active">See all people</NavLink>
         </div>
       )
     }

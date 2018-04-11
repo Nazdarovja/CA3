@@ -9,6 +9,7 @@ import {
 import facade from "../apiFacade";
 import LogIn from './LogIn';
 import LoggedIn from './LoggedIn';
+import PeopleTable from './PeopleTable';
 import NoMatch from './NoMatch'
 
 
@@ -46,9 +47,10 @@ class App extends Component {
                   </div>)
                 )
               }}/>
-              
+
               {/* render NoMatch if no other Route components match
               the URL */}
+              <Route path='/people' render={() => <PeopleTable facade={facade}/>}/>
               <Route component={NoMatch}/>
             </Switch>
           </Router>

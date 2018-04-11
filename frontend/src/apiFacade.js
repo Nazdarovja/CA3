@@ -1,5 +1,6 @@
 var pkg = require('../package.json');
 var URL = pkg.config.url;
+//var URL = 'http://localhost:8080/jwtbackend'
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -32,7 +33,7 @@ class ApiFacade {
   // data fetching
   fetchData = () =>{
       const options = this.makeFetchOptions("GET");
-      return fetch(URL+"/api/info/user",options).then(handleHttpErrors);
+      return fetch(URL+"/api/info/swapi/people",options).then(handleHttpErrors);
   }
 
   // TOKEN METHODS
@@ -55,7 +56,7 @@ class ApiFacade {
   login = (user, pass) => {
     console.log("this is the url: "+URL);
     const options = this.makeFetchOptions("POST",{ username: user, password: pass });
-    console.log('OPTIONS object: ' + options);
+    console.log('OPTIONS object: ' + JSON.stringify(options));
     return fetch(URL+"/api/login",options,true)
     .then(handleHttpErrors)
     .then(res=>{this.setToken(res.token)})
