@@ -50,7 +50,7 @@ public class DemoResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/swapi/{category}")
-//    @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public String getFromSwapiCategory(@PathParam("category") String category) throws Exception {
         RemoteFetch rf = new RemoteFetch();
         return rf.get(category);
@@ -58,7 +58,7 @@ public class DemoResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/swapi/{category}/{ID}")
-//    @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public String getFromSwapiCategoryAndID(@PathParam("category") String category, @PathParam("ID")int ID) throws Exception {
         RemoteFetch rf = new RemoteFetch();
         return rf.get(category, ID);
