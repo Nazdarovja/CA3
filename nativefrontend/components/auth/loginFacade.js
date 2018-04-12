@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-const URL = "https://stanitech.dk/jwtBackend-1.0-SNAPSHOT";
+const URL = "https://stanitech.dk/jwtBackend";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -20,8 +20,8 @@ class ApiFacade {
     return token;
   }
 
-  loggedIn = () => {
-    const loggedIn = this.getToken() != null;
+  loggedIn = async () => {
+    const loggedIn = await this.getToken() != null;
     return loggedIn;
   }
 
@@ -31,15 +31,23 @@ class ApiFacade {
 
   login = async (user, pass) => {
     const options = this.makeFetchOptions("POST", { username: user, password: pass });
-    const json = await fetch(URL + "/api/login", options, true)
+    await fetch(URL + "/api/login", options, true)
       .then(handleHttpErrors)
-      .then(res => { this.setToken(res.token)})
+      .then(res => {
+        this.setToken(res.token)})
+      .catch(function (error) {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+        // ADD THIS THROW error
+        throw error;
+      });
+
   }
 
   fetchData = async () => {
     const options = this.makeFetchOptions("GET");
     const json = await fetch(URL + "/api/info/user", options).then(handleHttpErrors);
-    return JSON.stringify(json);
+    console.log("hello from facade" + json);
+    return json;
   }
 
   makeFetchOptions = (type, b) => {

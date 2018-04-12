@@ -9,24 +9,25 @@ export default class Login extends Component {
     this.state = { isLoggedin: false, testText: "" };
   }
 
-  login = (username, password) => {
+  login = async (username, password) => {
     facade.login(username, password);
-
-    const bool = facade.loggedIn();
+    const bool = await facade.loggedIn();
     this.setState({ isLoggedin: bool });
+
   }
 
-  fetchData = async () => {
-    const json = await facade.fetchData();
-    console.log(json);
-    this.setState({ testText: json });
-  }
+  // componentDidMount() {
+
+  //   if (this.state.isLoggedin) {
+  //     const json = facade.fetchData();
+  //     this.setState({ testText: json });
+  //   }
+  // }
+
   render() {
     if (this.state.isLoggedin) {
-      this.fetchData();
-      console.log(this.state.testText);
       return (<View style={styles.container}>
-        <Text style={styles.title}>{this.state.testText}</Text>
+        <Text style={styles.title}>{JSON.stringify(this.state.testText)}</Text>
       </View>)
     }
     return (
