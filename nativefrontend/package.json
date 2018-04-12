@@ -27,6 +27,6 @@
     "react-navigation": "^1.5.11"
   },
   "config": {
-    "url": "http://localhost:8084/backend/api/"
+    "url": "https://stanitech.dk/jwtBackend"
   }
 }

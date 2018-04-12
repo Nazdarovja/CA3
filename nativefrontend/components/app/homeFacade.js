@@ -9,11 +9,7 @@ function handleHttpErrors(res) {
   return res.json();
 }
 
-class ApiFacade {
-
-  setToken = async (token) => {
-    await AsyncStorage.setItem('jwtToken', token)
-  }
+class homeFacade {
 
   getToken = async () => {
     const token = await AsyncStorage.getItem('jwtToken');
@@ -25,28 +21,11 @@ class ApiFacade {
     return loggedIn;
   }
 
-  logout = async () => {
-    await AsyncStorage.removeItem("jwtToken");
-  }
-
-  login = async (user, pass) => {
-    const options = await this.makeFetchOptions("POST", { username: user, password: pass });
-    await fetch(URL + "/api/login", options, true)
-      .then(handleHttpErrors)
-      .then(res => {
-        this.setToken(res.token)
-      })
-      .catch(function (error) {
-        console.log('There has been a problem with your fetch operation: ' + error.message);
-        // ADD THIS THROW error
-        throw error;
-      });
-
-  }
 
   fetchData = async () => {
     const options = await this.makeFetchOptions("GET");
     const res = await fetch(URL + "/api/info/swapi/people", options).then(handleHttpErrors);
+    console.log("2 ERROR from async"+ JSON.stringify(res));
     return res;
   }
 
@@ -65,5 +44,5 @@ class ApiFacade {
     }
   }
 }
-const facade = new ApiFacade();
+const facade = new homeFacade();
 export default facade;
