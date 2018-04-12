@@ -6,9 +6,9 @@ import facade from '../auth/loginFacade';
 export default class Home extends Component {
     logout = () => {
         facade.logout()
-        console.log("WAAAAAAAAAAAAAAAAAAZZZZZZZZZZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         this.props.navigation.navigate('Splash');
     }
+
     render() {
         return (
             <View style={styles.container}>

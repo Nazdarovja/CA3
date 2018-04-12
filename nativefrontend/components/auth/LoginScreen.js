@@ -6,31 +6,24 @@ import facade from './loginFacade';
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { isLoggedin: false, testText: "" };
+    this.state = {};
   }
 
   login = async (username, password) => {
-    facade.login(username, password);
+     await facade.login(username, password);
     const bool = await facade.loggedIn();
-    this.setState({ isLoggedin: bool });
-    this.props.navigation.navigate('Splash');
+
+    if (bool) {
+      this.props.navigation.navigate('Splash');
+    }
+
+    ///// INSERT WRONG LOGIN HANDLING ///////
+    
 
   }
 
-  // componentDidMount() {
-
-  //   if (this.state.isLoggedin) {
-  //     const json = facade.fetchData();
-  //     this.setState({ testText: json });
-  //   }
-  // }
 
   render() {
-    if (this.state.isLoggedin) {
-      return (<View style={styles.container}>
-        <Text style={styles.title}>{JSON.stringify(this.state.testText)}</Text>
-      </View>)
-    }
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View style={styles.logoContainer}>

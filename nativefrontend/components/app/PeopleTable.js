@@ -17,10 +17,11 @@ class PeopleTable extends Component {
 
     }
 
-    async componentDidMount() {
-        await this.props.facade.fetchData()
-            .then(res => this.setState({ dataFromServer: res }))
-            .catch(err => console.log("THIS IS THE ERROR" + JSON.stringify(err)))
+    fetchStuffs = async () => {
+        const res =  await this.props.facade.fetchData()
+        this.setState({dataFromServer : res});
+            
+        
     }
 
     head = () => {
@@ -53,6 +54,7 @@ class PeopleTable extends Component {
                     {this.body()}
                 </Table>
                 <Button onPress={() => this.props.logout()} title="Logout" />
+                <Button onPress={() => this.fetchStuffs()} title="Please work" />
             </View>
         )
     }

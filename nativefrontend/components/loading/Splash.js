@@ -14,7 +14,6 @@ export default class Splash extends Component {
   // Fetch the token from storage then navigate to our appropriate place
   checkToken = async () => {
     const userToken = await AsyncStorage.getItem('jwtToken');
-
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');

@@ -25,12 +25,12 @@ class ApiFacade {
     return loggedIn;
   }
 
-  logout = () => {
-    AsyncStorage.removeItem("jwtToken");
+  logout = async () => {
+    await AsyncStorage.removeItem("jwtToken");
   }
 
   login = async (user, pass) => {
-    const options = this.makeFetchOptions("POST", { username: user, password: pass });
+    const options = await this.makeFetchOptions("POST", { username: user, password: pass });
     await fetch(URL + "/api/login", options, true)
       .then(handleHttpErrors)
       .then(res => {
@@ -44,18 +44,22 @@ class ApiFacade {
 
   }
 
-  fetchData = () => {
-    const options = this.makeFetchOptions("GET");
-    return fetch(URL + "/api/info/swapi/people", options).then(handleHttpErrors);
+  fetchData = async () => {
+    console.log("-----------------------------------------------------------------FETCH DATA");
+    const options = await this.makeFetchOptions("GET");
+    const res = await fetch(URL + "/api/info/swapi/people", options).then(handleHttpErrors);
+    console.log("2 ERROR from async"+ JSON.stringify(res));
+    return res;
   }
 
-  makeFetchOptions = (type, b) => {
+  makeFetchOptions = async (type, b) => {
+    console.log("++++++++++++++++++++++++++++++++++++++ THis is make fetch")
     let headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    if (this.loggedIn()) {
-      headers["x-access-token"] = this.getToken();
+    if ( await this.loggedIn()) {
+      headers["x-access-token"] = await this.getToken();
     }
     return {
       method: type,
