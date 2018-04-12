@@ -22,7 +22,8 @@
     "expo": "^26.0.0",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.0",
-    "react-native-navigation": "^1.1.439"
+    "react-native-navigation": "^1.1.439",
+    "react-navigation": "^1.5.11"
   },
   "config": {
     "url": "http://localhost:8084/backend/api/"

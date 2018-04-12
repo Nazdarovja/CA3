@@ -1,5 +1,5 @@
 import React from 'react'
-import { StackNavigator } from 'react-native-navigation';
+import { StackNavigator } from 'react-navigation';
 
 import Home from './Home'
 

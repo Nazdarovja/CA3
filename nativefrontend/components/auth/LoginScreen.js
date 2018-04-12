@@ -13,6 +13,7 @@ export default class Login extends Component {
     facade.login(username, password);
     const bool = await facade.loggedIn();
     this.setState({ isLoggedin: bool });
+    this.props.navigation.navigate('Splash');
 
   }
 

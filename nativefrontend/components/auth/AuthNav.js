@@ -1,8 +1,8 @@
-import { StackNavigator } from 'react-native-navigation'
+import { SwitchNavigator } from 'react-navigation';
 
 import LoginScreen from './LoginScreen';
 
-const StackNav = StackNavigator(
+const StackNav = SwitchNavigator(
   {
     Login: { screen: LoginScreen }
   }

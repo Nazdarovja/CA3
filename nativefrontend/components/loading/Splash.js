@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, AsyncStorage } from 'react-native';
 
 
 export default class Splash extends Component {
   constructor() {
     super();
+  }
+
+  componentDidMount() {
     this.checkToken();
   }
 
   // Fetch the token from storage then navigate to our appropriate place
   checkToken = async () => {
+    console.log("FUCKERS");
     const userToken = await AsyncStorage.getItem('jwtToken');
 
     // This will switch to the App screen or Auth screen and this loading

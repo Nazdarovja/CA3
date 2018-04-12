@@ -1,4 +1,4 @@
-import { SwitchNavigator } from 'react-native-navigation';
+import { SwitchNavigator } from 'react-navigation';
 import Splash from '../loading/Splash';
 import AuthStack from "../auth/AuthNav";
 import AppStack from "../app/AppNav";
