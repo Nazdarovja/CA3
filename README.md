@@ -20,17 +20,25 @@ Give examples
 
 instructions in how to use the seed:
 
-Backend	
+(Instructions for this seed will assume the use of NetBeans, Visual Studio Code, but instuctions should be somewhat usable in other programs)
+
+First, Clone/Fork the repository. Navigate to the CA3 folder.
+
+
+Backend:	
+```
+- Open the Backend project in NetBeans.
+- Add a new Persistence Unit to the project. 
+
+
+```
+
+Frontend:
 ```
 Give the example
 ```
 
-Frontend
-```
-Give the example
-```
-
-Native Frontend
+Native Frontend:
 ```
 Give the example
 ```
