@@ -34,7 +34,8 @@ class ApiFacade {
     await fetch(URL + "/api/login", options, true)
       .then(handleHttpErrors)
       .then(res => {
-        this.setToken(res.token)})
+        this.setToken(res.token)
+      })
       .catch(function (error) {
         console.log('There has been a problem with your fetch operation: ' + error.message);
         // ADD THIS THROW error
@@ -43,11 +44,9 @@ class ApiFacade {
 
   }
 
-  fetchData = async () => {
+  fetchData = () => {
     const options = this.makeFetchOptions("GET");
-    const json = await fetch(URL + "/api/info/user", options).then(handleHttpErrors);
-    console.log("hello from facade" + json);
-    return json;
+    return fetch(URL + "/api/info/swapi/people", options).then(handleHttpErrors);
   }
 
   makeFetchOptions = (type, b) => {

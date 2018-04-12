@@ -1,14 +1,17 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation';
 
-import Home from './Home'
+import HomeScreen from './HomeScreen'
 
 // const routeConfig = {
 //   Home: { screen: Home }
 // }
 
 const StackNav = StackNavigator({
-  Home: { screen: Home }
+  Home: { 
+    screen: HomeScreen 
+  },
+
 }
 );
 

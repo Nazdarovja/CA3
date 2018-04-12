@@ -13,7 +13,6 @@ export default class Splash extends Component {
 
   // Fetch the token from storage then navigate to our appropriate place
   checkToken = async () => {
-    console.log("FUCKERS");
     const userToken = await AsyncStorage.getItem('jwtToken');
 
     // This will switch to the App screen or Auth screen and this loading
@@ -27,7 +26,7 @@ export default class Splash extends Component {
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
           <ActivityIndicator />
-          <Text style={styles.title}> SyncList App </Text>
+          <Text style={styles.title}> Seed App </Text>
         </View>
         <View>
           <Text style={styles.subtitle}>Powered by React Native</Text>
