@@ -17,6 +17,6 @@
     "eject": "react-scripts eject"
   },
   "config": {
-    "url": "https://awha.dk/jwtbackend"
+    "url": "https://awha.dk/jwtBackend"
   }
 }
