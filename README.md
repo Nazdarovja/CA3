@@ -18,6 +18,24 @@ Give examples
 
 ### Installing
 
+instructions in how to use the seed:
+
+Backend	
+```
+Give the example
+```
+
+Frontend
+```
+Give the example
+```
+
+Native Frontend
+```
+Give the example
+```
+
+
 A step by step series of examples that tell you have to get a development env running
 
 Say what the step will be
