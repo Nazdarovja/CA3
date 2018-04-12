@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ActivityIndicator } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 
 
@@ -14,20 +14,10 @@ class PeopleTable extends Component {
                 results: []
             }
         };
-
     }
 
-    fetchStuffs = async () => {
-        const res =  await this.props.facade.fetchData()
-        this.setState({dataFromServer : res});
-            
-        
-    }
-
-    head = () => {
-        return (
-            <Row data={this.headers} />
-        )
+    componentWillReceiveProps(props) {
+        this.setState({ dataFromServer: props.data });
     }
 
     body = () => {
@@ -50,11 +40,9 @@ class PeopleTable extends Component {
         return (
             <View>
                 <Table>
-                    {this.head()}
+                    <Row data={this.headers} />
                     {this.body()}
                 </Table>
-                <Button onPress={() => this.props.logout()} title="Logout" />
-                <Button onPress={() => this.fetchStuffs()} title="Please work" />
             </View>
         )
     }

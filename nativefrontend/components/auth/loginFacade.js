@@ -45,7 +45,6 @@ class ApiFacade {
   }
 
   fetchData = async () => {
-    console.log("-----------------------------------------------------------------FETCH DATA");
     const options = await this.makeFetchOptions("GET");
     const res = await fetch(URL + "/api/info/swapi/people", options).then(handleHttpErrors);
     console.log("2 ERROR from async"+ JSON.stringify(res));
@@ -53,7 +52,6 @@ class ApiFacade {
   }
 
   makeFetchOptions = async (type, b) => {
-    console.log("++++++++++++++++++++++++++++++++++++++ THis is make fetch")
     let headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

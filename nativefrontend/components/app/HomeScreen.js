@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import PeopleTable from './PeopleTable';
 import facade from '../auth/loginFacade';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: [] }
+    }
+
     logout = () => {
         facade.logout()
         this.props.navigation.navigate('Splash');
     }
 
+    async componentDidMount() {
+        const res = await facade.fetchData()
+        this.setState({ data: res });
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                    <PeopleTable logout={this.logout} facade={facade} />
+                <PeopleTable data={this.state.data} />
+                <View>
+                    <Button style={styles.buttton} onPress={() => this.logout()} title="Logout test button" />
+                </View>
             </View>
         );
     }
@@ -21,12 +34,13 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
-
+        backgroundColor: '#57606f',
+        justifyContent: 'center',
     },
-    title: {
-        marginTop: 10,
-        textAlign: 'center',
+    button : {
+        flex : 1,
+        
+        
+    }
 
-    },
 })

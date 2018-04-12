@@ -24,8 +24,8 @@ export default class Splash extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
-          <ActivityIndicator />
           <Text style={styles.title}> Seed App </Text>
+          <ActivityIndicator />
         </View>
         <View>
           <Text style={styles.subtitle}>Powered by React Native</Text>
@@ -37,7 +37,7 @@ export default class Splash extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#2980b9',
+    backgroundColor: '#2f3542',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
