@@ -49,10 +49,10 @@ class Error {
     }
 }
 @Provider
-public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
+public class GenericExceptionMapper implements ExceptionMapper<NotFoundException>  {
     static private final Gson gson = new Gson();
     @Override
-    public Response toResponse(Throwable  ex) {
+    public Response toResponse(NotFoundException  ex) {
        
         Response.StatusType type = getStatusType(ex);
         Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);

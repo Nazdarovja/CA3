@@ -4,9 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import exceptions.NotFoundException;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -28,7 +30,7 @@ public class RemoteFetch {
         return gson.toJson(je);
     }
 
-    private String fetch(String url) throws Exception {
+    private String fetch(String url) {
 
         //https://swapi.co/api/people/1
         //testing in Tester.java
@@ -36,13 +38,22 @@ public class RemoteFetch {
         try {
             address = new URL(url);
         } catch (MalformedURLException ex) {
-            throw new Exception("EXCEPTION ERROR");
+            throw new NotFoundException("URL not found");
         }
-        HttpURLConnection conn = (HttpURLConnection) address.openConnection();
+        HttpURLConnection conn;
+        try {
+            conn = (HttpURLConnection) address.openConnection();
+        } catch (IOException ex) {
+            throw new NotFoundException("Unable to connect");
+        }
 
-        conn.setRequestMethod("GET");
+        try {
+            conn.setRequestMethod("GET");
+        } catch (ProtocolException ex) {
+            throw new NotFoundException("");
+        }
         conn.setRequestProperty("Accept", "application/json");
-        conn.setRequestProperty("User-Agent", "");
+        conn.setRequestProperty("User-Agent", "server");
 
         Scanner scan = new Scanner(conn.getInputStream());
         String jsonStr = null;
@@ -57,9 +68,8 @@ public class RemoteFetch {
      * 
      * @param category
      * @return
-     * @throws Exception 
      */
-    public String get(String category) throws Exception {
+    public String get(String category) {
         String URL = baseUrl + category.toLowerCase();
         return fetch(URL);
     }
@@ -69,9 +79,8 @@ public class RemoteFetch {
      * @param category
      * @param ID
      * @return
-     * @throws Exception 
      */
-    public String get(String category, int ID) throws Exception{
+    public String get(String category, int ID){
         String URL = baseUrl + category.toLowerCase() + "/" + ID;
         return fetch(URL);
     }
