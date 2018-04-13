@@ -29,19 +29,31 @@ Backend:
 ```
 - Open the Backend project in NetBeans.
 - Add a new Persistence Unit to the project. 
-- Create a local database schema (or use a remote) - establish connection through the Persistence Unit
-- Add entity classes to the Persistence Unit
-- 
+- Create a local database schema (or use a remote) - establish connection through the Persistence Unit.
+- Add entity classes to the Persistence Unit.
+- Run the project, to start the backend locally, or deploy the .war file (from /target/ subfolder) to remote server.
 ```
 
 Frontend:
 ```
-Give the example
+- Open the Frontend project in Visual Studio Code.
+- Open Bash
+- type "yarn install" to install dependencies (or npm install)
+- open file "package.json" and change the "/config/URL" field value to your backend URL
+- type "yarn start" to start the development server
+
 ```
 
 Native Frontend:
 ```
-Give the example
+- Navigate to the Nativefrontend project folder
+- Open Bash
+- type "yarn install"
+- open file "package.json" and change the "/config/URL" field value to your backend URL
+- open a new Bash
+- type "exp start --lan  (or empty to tunnel through Expo)
+- 
+
 ```
 
 
