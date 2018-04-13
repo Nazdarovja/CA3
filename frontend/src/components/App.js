@@ -18,17 +18,17 @@ import NoMatch from './NoMatch'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: false, error: undefined }
+    this.state = { loggedIn: facade.loggedIn(), error: undefined }
   }
 
   logout = () => {
     facade.logout();
-    this.setState({ loggedIn: false });
+    this.setState({ loggedIn: facade.loggedIn() });
   }
 
   login = (user, pass) => {
     facade.login(user, pass)
-      .then(res => this.setState({ loggedIn: true, error: undefined}))
+      .then(res => this.setState({ loggedIn: facade.loggedIn(), error: undefined}))
       .catch(err => this.setState({ error: "The password is invalid" }));
   }
 
@@ -62,9 +62,9 @@ class App extends Component {
               )
             }} />
 
+            <Route path='/people' render={() => <PeopleTable facade={facade} />} />
             {/* render NoMatch if no other Route components match
               the URL */}
-            <Route path='/people' render={() => <PeopleTable facade={facade} />} />
             <Route component={NoMatch} />
           </Switch>
         </Router>
