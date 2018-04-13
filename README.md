@@ -48,30 +48,16 @@ Native Frontend:
 ```
 - Navigate to the Nativefrontend project folder
 - Open Bash
+- type "yarn add exp -g" to install Expo terminal tool (create user/login) 
+- install Expo Client on your mobile device
 - type "yarn install"
 - open file "package.json" and change the "/config/URL" field value to your backend URL
 - open a new Bash
 - type "exp start --lan  (or empty to tunnel through Expo)
-- 
+- Open Expo Client on your mobile device
+- Click the project to view the app or scan the QR code from the terminal 
 
 ```
-
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Deployment
 
