@@ -1,6 +1,4 @@
-var pkg = require('../package.json');
-var URL = pkg.config.url;
-//var URL = 'http://localhost:8080/jwtbackend'
+const URL = require('../package.json').config.url;
 
 function handleHttpErrors(res) {
   if (!res.ok) {

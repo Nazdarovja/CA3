@@ -3,24 +3,38 @@ import {
     NavLink
 } from 'react-router-dom'
 
-import "../style/App.css";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 class PeopleTable extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
-        this.state = {dataFromServer: {
-            results: []
-          }, error: ""};
+        this.state = {
+            dataFromServer: {
+                results: []
+            }, error: undefined
+        };
         this.head = this.head.bind(this);
         this.body = this.body.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.facade.fetchData()
-        .then(res=> this.setState({dataFromServer: res}))
-        .catch(err => console.log(err))
-      }
+            .then(res => this.setState({ dataFromServer: res, error : undefined }))
+            .catch(err => this.setState({error: err.message}))
+    }
+
+    error = ()=>  {
+        if(this.state.error === undefined){
+        return(
+            null
+        )
+    } else {
+        return (
+            <p className="alert alert-warning">{this.state.error}</p>
+        )
+    }
+    }
 
     head() {
         return (
@@ -36,8 +50,8 @@ class PeopleTable extends Component {
         )
     }
 
-    body(){
-        const {results} = this.state.dataFromServer;
+    body() {
+        const { results } = this.state.dataFromServer;
         const inner = results.map((rowData, index) => {
             return (
                 <tr key={index}>
@@ -57,17 +71,17 @@ class PeopleTable extends Component {
         )
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <table>
+                <table className="table table-striped">
                     {this.head()}
                     {this.body()}
                 </table>
+                {this.error()}
                 <NavLink activeClassName="active" to="/">
-                    <button >Back</button>
+                    <button className="btn btn-default">Back</button>
                 </NavLink>
-                <p className="App-error">{this.state.error}</p>
             </div>
         )
     }
