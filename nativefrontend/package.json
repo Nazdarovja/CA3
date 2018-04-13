@@ -27,6 +27,6 @@
     "react-navigation": "^1.5.11"
   },
   "config": {
-    "url": "https://stanitech.dk/jwtBackend"
+    "url": "https://awha.dk/jwtBackend"
   }
 }
