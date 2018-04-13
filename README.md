@@ -8,19 +8,31 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
+### Software Prerequisites
+(Instructions for this seed will assume the use of this software, but instuctions should be somewhat usable in other programs)
 ```
-Give examples
+Netbeans
+- JAX-RS
+- GSON
+- mysql connector
+
+Visual Studio Code
+- React
+- React-Native
+
+Expo SDE & Expo Client (mobile)
+
+Mysql Workbench
+
+Other:
+- Github
+- Git Bash
+- Node.js
 ```
 
 ### Installing
 
 instructions in how to use the seed:
-
-(Instructions for this seed will assume the use of NetBeans, Visual Studio Code, but instuctions should be somewhat usable in other programs)
 
 First, Clone/Fork the repository. Navigate to the CA3 folder.
 
