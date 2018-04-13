@@ -6,7 +6,9 @@ import facade from '../auth/loginFacade';
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = { data: [] }
+        this.state = { data: [],
+                       error: "" 
+                    }
     }
 
     logout = () => {
@@ -15,8 +17,14 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
-        const res = await facade.fetchData()
-        this.setState({ data: res });
+        const res = await facade.fetchData();
+        if(Number(res.status) >= 400) {
+            this.setState({
+                error: res.message
+            });
+        }
+        else 
+            this.setState({ data: res });
     }
 
     render() {

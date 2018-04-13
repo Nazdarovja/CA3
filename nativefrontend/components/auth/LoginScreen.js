@@ -6,15 +6,20 @@ import facade from './loginFacade';
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {error: ""};
   }
 
   login = async (username, password) => {
-     await facade.login(username, password);
+    await facade.login(username, password);
     const bool = await facade.loggedIn();
 
     if (bool) {
       this.props.navigation.navigate('Splash');
+    }
+    else {
+      this.setState({
+        error: "Could not login, try again.."
+      });
     }
 
     ///// INSERT WRONG LOGIN HANDLING ///////
@@ -30,6 +35,7 @@ export default class Login extends Component {
           <Image
             style={styles.logo}
             source={require('../../images/icon.png')} />
+            <Text style={{color: "red"}}>{this.state.error}</Text>
           <Text style={styles.title}>Seed powered by React Native</Text>
         </View>
 
