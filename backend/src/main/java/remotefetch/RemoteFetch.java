@@ -38,7 +38,7 @@ public class RemoteFetch {
         try {
             address = new URL(url);
         } catch (MalformedURLException ex) {
-            throw new NotFoundException("URL not found");
+                throw new NotFoundException("URL not found");
         }
         HttpURLConnection conn;
         try {
@@ -50,12 +50,17 @@ public class RemoteFetch {
         try {
             conn.setRequestMethod("GET");
         } catch (ProtocolException ex) {
-            throw new NotFoundException("");
+            throw new NotFoundException("Internal error happened!");
         }
         conn.setRequestProperty("Accept", "application/json");
         conn.setRequestProperty("User-Agent", "server");
 
-        Scanner scan = new Scanner(conn.getInputStream());
+        Scanner scan;
+        try {
+            scan = new Scanner(conn.getInputStream());
+        } catch (IOException ex) {
+            throw new NotFoundException("Unable to connect");
+        }
         String jsonStr = null;
         if (scan.hasNext()) {
             jsonStr = scan.nextLine();
