@@ -1,5 +1,29 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0"
+    "name": "nativefrontend",
+    "description": "This project is really great.",
+    "slug": "nativefrontend",
+    "privacy": "public",
+    "sdkVersion": "26.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./images/icon.png",
+    "splash": {
+      "image": "./images/icon.png",
+      "backgroundColor": "#95A5A6",
+      "height": 100,
+      "width" : 100,
+      "resizeMode" : "contain" 
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
   }
 }

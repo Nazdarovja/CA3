@@ -9,45 +9,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-/*
-  Utility class to map errors into JSON
-*/
-class Error {
-
-    private int statusCode;
-    private String statusDescription;
-    private String errorMessage;
-
-    public Error(int statusCode, String statusDescription, String errorMessage) {
-        this.statusCode = statusCode;
-        this.statusDescription = statusDescription;
-        this.errorMessage = errorMessage;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public String getStatusDescription() {
-        return statusDescription;
-    }
-
-    public void setStatusDescription(String statusDescription) {
-        this.statusDescription = statusDescription;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-}
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
     static private final Gson gson = new Gson();
@@ -57,7 +18,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
         Response.StatusType type = getStatusType(ex);
         Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);
 
-        Error error = new Error(
+        ErrorMessage error = new ErrorMessage(
                 type.getStatusCode(),
                 type.getReasonPhrase(),
                 ex.getLocalizedMessage());
@@ -82,7 +43,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable>  {
     
     //Small hack, to provide json-error response in the filter
     public static Response makeErrRes(String msg,int status){
-        Error error = new Error(
+        ErrorMessage error = new ErrorMessage(
                 status,
                 msg,
                 msg);
